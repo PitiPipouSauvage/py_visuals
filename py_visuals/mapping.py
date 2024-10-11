@@ -4,15 +4,6 @@ import sys
 import time
 
 
-def extract(map: Map, first_corner: tuple, second_corner: tuple) -> np.array:
-	new_map: np.array = np.array([['0'] * (second_corner[0] - first_corner[0])] * (second_corner[1] - first_corner[1]))
-	for i in range(first_corner[0], second_corner[0]):
-		for j in range(first_corner[1], second_corner[1]):
-			new_map[i - first_corner[0], j - first_corner[1]] = map.map[i, j]
-
-	return new_map
-
-
 class Map:
 	def __init__(self, x_size: int, y_size: int):
 		x_array: list = ['0'] * x_size
@@ -57,8 +48,8 @@ class Animation:
 	def __init__(self, height: int, width: int, folder: str):
 		self.height: int = height
 		self.width: int = width
-		self.folder: str = folder.split("/")[1]
 		self.frames: list = []
+		self.folder = folder
 
 	def load_animation(self) -> None:
 		dir_content: list = os.listdir(self.folder)
@@ -68,3 +59,11 @@ class Animation:
 			success: int = self.frames[i].load(dir_content[i])
 			if success == 1:
 				sys.exit("Invalid size")
+
+def extract(map: Map, first_corner: tuple, second_corner: tuple) -> np.array:
+	new_map: np.array = np.array([['0'] * (second_corner[0] - first_corner[0])] * (second_corner[1] - first_corner[1]))
+	for i in range(first_corner[0], second_corner[0]):
+		for j in range(first_corner[1], second_corner[1]):
+			new_map[i - first_corner[0], j - first_corner[1]] = map.map[i, j]
+
+	return new_map

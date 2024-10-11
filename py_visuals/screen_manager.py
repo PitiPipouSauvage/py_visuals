@@ -1,6 +1,8 @@
-import mapping
 import numpy as np
 import sys
+
+from py_visuals import mapping
+
 
 def move_cursor(row, column):
 	sys.stdout.write(f"\033[{row};{column}H")
