@@ -4,19 +4,10 @@ import screen_manager as sm
 import sys
 
 
-loading_sequence = ["-", "\\", "|", "/"]
-
-
-def init(animations_folder: str) -> int:
+def init(animations_folder: str, height: int, width: int, resolution=1) -> sm.Screen:
 	animations: dict = {}
+	loading_sequence = ["-", "\\", "|", "/"]
 
-	try:
-		width = int(sys.argv[1])
-		height = int(sys.argv[2])
-
-	except IndexError:
-		width = 500
-		height = 400
 
 	for i in range(len(os.listdir(animations_folder))):
 		sm.move_cursor(0, 0)
@@ -25,5 +16,6 @@ def init(animations_folder: str) -> int:
 		animation = mapping.Animation(height, width, f"{animations_folder}{os.listdir(animations_folder)[i]}")
 		animation.load_animation()
 		animations[os.listdir()[i]] = animation 
-	
-	return 0
+
+	screen = sm.Screen(height, width, resolution)
+	return screen
