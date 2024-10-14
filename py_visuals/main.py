@@ -5,8 +5,9 @@ from py_visuals import mapping
 from py_visuals import screen_manager as sm
 
 
-def init(animations_folder: str, height: int, width: int, resolution=1) -> sm.Screen:
+def init(texture_folder: str, animations_folder: str, height: int, width: int, resolution=1) -> sm.Screen:
 	animations: dict = {}
+	textures: dict = {}
 	loading_sequence = ["-", "\\", "|", "/"]
 	logo = """
 .----..-.  .-..-. .-..-. .----..-. .-.  .--.  .-.    .----.
@@ -16,12 +17,16 @@ def init(animations_folder: str, height: int, width: int, resolution=1) -> sm.Sc
 
 	"""
 
+	loading_phase: int = 0
+	sys.stdout.write("Powered by\n")
+	sys.stdout.write(logo)
+	sys.stdout.flush()
 
 	for i in range(len(os.listdir(animations_folder))):
 		screen = sm.Screen(height, width, resolution)
 		screen.clear()
 		screen.blit()
-		sm.move_cursor(0, 0)
+		sm.move_cursor(loading_phase, 0)
 		
 		sys.stdout.write(f"Loading animations {loading_sequence[i % 4]} \n")
 		sys.stdout.flush()
@@ -29,7 +34,18 @@ def init(animations_folder: str, height: int, width: int, resolution=1) -> sm.Sc
 		animation.load_animation()
 		animations[os.listdir()[i]] = animation 
 
-	sys.stdout.write("Powered by\n")
-	sys.stdout.write(logo)
-	sys.stdout.flush()
+	loading_phase += 1
+
+	for i in range(len(os.listdir(texture_folder))):
+		screen.clear()
+		screen.blit()
+		sm.move_cursor(loading_phase, 0)
+		sys.stdout.write(f"Loading textures {loading_sequence[i % 4]} \n")
+		sys.stdout.flush()
+
+		map = mapping.Map()
+		map.load(os.listdir(texture_folder)[i])
+		textures[os.listdir(texture_folder)[i]] = map
+
 	return screen
+	
