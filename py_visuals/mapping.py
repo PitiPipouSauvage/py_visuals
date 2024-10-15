@@ -71,12 +71,12 @@ def extract(map: Map, first_corner: tuple, second_corner: tuple) -> np.array:
 
 
 def intersect(entity1: Map, entity2: Map, coord_e1: tuple[int], coord_e2: tuple[int]) -> bool:
-	return coord_e1[0] <= (coord_e2[0] + entity2.map.shape[0]) && (coord_e1[0] + entity1.map.shape[0]) >= coord_e2[0] && \ 
-		coord_e1[1] <= (coord_e2[1] + entity2.map.shape[1]) && (coord_e1[1] + entity1.map.shape[1]) >= coord_e2[1]
+	return coord_e1[0] <= (coord_e2[0] + entity2.map.shape[0]) and (coord_e1[0] + entity1.map.shape[0]) >= coord_e2[0] and \
+		coord_e1[1] <= (coord_e2[1] + entity2.map.shape[1]) and (coord_e1[1] + entity1.map.shape[1]) >= coord_e2[1]
 
 
 def collision(entity1: Map, entity2: Map, coord_e1: tuple[int], coord_e2: tuple[int], empty_charac=' ') -> bool:
-	if !intersect(entity1, entity2, coord_e1, coord_e2):
+	if not(intersect(entity1, entity2, coord_e1, coord_e2)):
 		return False
 
 	pixels_entity_1: list[MapFromArray] = []

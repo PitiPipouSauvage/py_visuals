@@ -49,5 +49,8 @@ def init(texture_folder: str, animations_folder: str, height: int, width: int, r
 			map.load(os.listdir(texture_folder)[i])
 			textures[os.listdir(texture_folder)[i]] = map
 
+	if texture_folder == None and animations_folder == None:
+		screen = sm.Screen(height, width, resolution)
+
 	return screen
 	
