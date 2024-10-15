@@ -60,10 +60,54 @@ class Animation:
 			if success == 1:
 				sys.exit("Invalid size")
 
+
 def extract(map: Map, first_corner: tuple, second_corner: tuple) -> np.array:
 	new_map: np.array = np.array([['0'] * (second_corner[0] - first_corner[0])] * (second_corner[1] - first_corner[1]))
-	for i in range(first_corner[0], second_corner[0]):
-		for j in range(first_corner[1], second_corner[1]):
+	for i in range(first_corner[0], second_corner[0] + 1):
+		for j in range(first_corner[1], second_corner[1] + 1):
 			new_map[i - first_corner[0], j - first_corner[1]] = map.map[i, j]
 
 	return new_map
+
+
+def intersect(entity1: Map, entity2: Map, coord_e1: tuple[int], coord_e2: tuple[int]) -> bool:
+	return coord_e1[0] <= (coord_e2[0] + entity2.map.shape[0]) && (coord_e1[0] + entity1.map.shape[0]) >= coord_e2[0] && \ 
+		coord_e1[1] <= (coord_e2[1] + entity2.map.shape[1]) && (coord_e1[1] + entity1.map.shape[1]) >= coord_e2[1]
+
+
+def collision(entity1: Map, entity2: Map, coord_e1: tuple[int], coord_e2: tuple[int], empty_charac=' ') -> bool:
+	if !intersect(entity1, entity2, coord_e1, coord_e2):
+		return False
+
+	pixels_entity_1: list[MapFromArray] = []
+	pixels_entity_2: list[MapFromArray] = []
+
+	for entity, pixel_list, coord in [entity1, entity2], [pixels_entity_1, pixels_entity_2], [coord_e1, coord_e2]:
+		for i in range(entity.map.shape[0]):
+			for j in range(entity.map.shape[1]):
+				if entity.map[i, j] == empty_charac:
+					continue
+				else:
+					pixel_list.append((i + coord[0], j + coord[1]))
+
+	for pixel1 in pixels_entity_1:
+		for pixel2 in pixels_entity_2:
+			if pixel1 == pixel2:
+				return True
+
+	return False
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

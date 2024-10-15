@@ -22,30 +22,32 @@ def init(texture_folder: str, animations_folder: str, height: int, width: int, r
 	sys.stdout.write(logo)
 	sys.stdout.flush()
 
-	for i in range(len(os.listdir(animations_folder))):
-		screen = sm.Screen(height, width, resolution)
-		screen.clear()
-		screen.blit()
-		sm.move_cursor(loading_phase, 0)
-		
-		sys.stdout.write(f"Loading animations {loading_sequence[i % 4]} \n")
-		sys.stdout.flush()
-		animation = mapping.Animation(height, width, f"{animations_folder}/{os.listdir(animations_folder)[i]}")
-		animation.load_animation()
-		animations[os.listdir()[i]] = animation 
+	if animations_folder != None:
+		for i in range(len(os.listdir(animations_folder))):
+			screen = sm.Screen(height, width, resolution)
+			screen.clear()
+			screen.blit()
+			sm.move_cursor(loading_phase, 0)
+			
+			sys.stdout.write(f"Loading animations {loading_sequence[i % 4]} \n")
+			sys.stdout.flush()
+			animation = mapping.Animation(height, width, f"{animations_folder}/{os.listdir(animations_folder)[i]}")
+			animation.load_animation()
+			animations[os.listdir()[i]] = animation 
 
-	loading_phase += 1
+		loading_phase += 1
 
-	for i in range(len(os.listdir(texture_folder))):
-		screen.clear()
-		screen.blit()
-		sm.move_cursor(loading_phase, 0)
-		sys.stdout.write(f"Loading textures {loading_sequence[i % 4]} \n")
-		sys.stdout.flush()
+	if texture_folder != None:
+		for i in range(len(os.listdir(texture_folder))):
+			screen.clear()
+			screen.blit()
+			sm.move_cursor(loading_phase, 0)
+			sys.stdout.write(f"Loading textures {loading_sequence[i % 4]} \n")
+			sys.stdout.flush()
 
-		map = mapping.Map()
-		map.load(os.listdir(texture_folder)[i])
-		textures[os.listdir(texture_folder)[i]] = map
+			map = mapping.Map()
+			map.load(os.listdir(texture_folder)[i])
+			textures[os.listdir(texture_folder)[i]] = map
 
 	return screen
 	
