@@ -17,10 +17,10 @@ class Map:
 
 			for line_index in range(1, len(lines)):
 				if len(lines[line_index]) != len(lines[line_index - 1]):
-					return 1
+					return 2
 
 				if len(lines[line_index]) > self.map.shape[1]:
-					return 1
+					return 3
 
 			for i in range(len(lines)):
 				new_line: list = list(lines[i])
