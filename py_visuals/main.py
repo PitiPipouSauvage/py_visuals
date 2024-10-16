@@ -49,7 +49,11 @@ def init(texture_folder: str, animations_folder: str, height: int, width: int, r
 			text_map: mapping.Map = mapping.Map(height, width)
 			result = text_map.load(f"{texture_folder}/{os.listdir(texture_folder)[i]}")
 			if result == 1:
-				sys.exit(1)
+				sys.exit("1")
+			elif result == 2:
+				sys.exit("2")
+			elif result == 3:
+				sys.exit("3")
 			textures[os.listdir(texture_folder)[i]] = text_map
 
 	screen.textures = textures
