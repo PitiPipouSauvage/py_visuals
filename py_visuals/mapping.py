@@ -6,14 +6,11 @@ import time
 
 class Map:
 	def __init__(self, x_size: int, y_size: int):
-		x_array: list = ['0'] * x_size
-		y_array: list = [x_array] * y_size
-
-		self.map: np.array = np.array(y_array)
+		self.map: np.array = np.array([['0'] * x_size for _ in range(y_size)])
 
 	def load(self, object_file: str) -> int:
 		with open(object_file, 'r') as obj:
-			lines: list = obj.readlines()
+			lines: list = [line.strip() for line in obj.readlines()]
 
 			if len(lines) > self.map.shape[1]:
 				return 1
@@ -26,7 +23,7 @@ class Map:
 					return 1
 
 			for i in range(len(lines)):
-				new_line: list = [j for j in lines[i]]
+				new_line: list = list(lines[i])
 				lines[i] = new_line
 
 			self.map = np.array(lines)
