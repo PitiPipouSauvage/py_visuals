@@ -15,6 +15,8 @@ class Screen:
 		self.width = width
 		self.resolution = resolution
 		self.screen_matrix: np.array = np.array([[' '] * self.width * resolution] * self.height * resolution)
+		self.textures = {}
+		self.animations = {}
 
 	def clear(self) -> None:
 		self.screen_matrix: np.array = np.array([[' '] * self.width] * self.height)
