@@ -17,6 +17,7 @@ class Map:
 
 			for line_index in range(1, len(lines)):
 				if len(lines[line_index]) != len(lines[line_index - 1]):
+					print(lines[0])
 					print(len(lines[line_index]), len(lines[line_index - 1]))
 					return 2
 
