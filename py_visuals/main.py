@@ -22,9 +22,10 @@ def init(texture_folder: str, animations_folder: str, height: int, width: int, r
 	sys.stdout.write(logo)
 	sys.stdout.flush()
 
+	screen = sm.Screen(height, width, resolution)
+
 	if animations_folder != None:
 		for i in range(len(os.listdir(animations_folder))):
-			screen = sm.Screen(height, width, resolution)
 			screen.clear()
 			screen.blit()
 			sm.move_cursor(loading_phase, 0)
@@ -49,8 +50,6 @@ def init(texture_folder: str, animations_folder: str, height: int, width: int, r
 			map.load(os.listdir(texture_folder)[i])
 			textures[os.listdir(texture_folder)[i]] = map
 
-	if texture_folder == None and animations_folder == None:
-		screen = sm.Screen(height, width, resolution)
 
 	return screen
 	
