@@ -20,7 +20,6 @@ class Map:
 					if len(lines[line_index]) > len(lines[line_index - 1]):
 						lines[line_index][i] += ' ' * (len(lines[line_index - 1]) - len(lines[line_index]))
 					else:
-						for i in range(len(lines[line_index]), len(lines[line_index - 1])):
 						lines[line_index][i] += ' ' * (len(lines[line_index]) - len(lines[line_index - 1]))
 
 				if len(lines[line_index]) > self.map.shape[1]:
