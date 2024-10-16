@@ -46,9 +46,9 @@ def init(texture_folder: str, animations_folder: str, height: int, width: int, r
 			sys.stdout.write(f"Loading textures {loading_sequence[i % 4]} \n")
 			sys.stdout.flush()
 
-			map = mapping.Map()
+			text_map: mapping.Map = mapping.Map(height, width)
 			map.load(os.listdir(texture_folder)[i])
-			textures[os.listdir(texture_folder)[i]] = map
+			textures[os.listdir(texture_folder)[i]] = map()
 
 
 	return screen
