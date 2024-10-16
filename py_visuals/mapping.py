@@ -16,6 +16,14 @@ class Map:
 				return 1
 
 			for line_index in range(1, len(lines)):
+				if len(lines[line_index]) != len(lines[line_index - 1]):
+					if len(lines[line_index]) > len(lines[line_index - 1]):
+						for i in range(len(lines[line_index - 1]), len(lines[line_index])):
+							lines[line_index - 1][i] = ' '
+					else:
+						for i in range(len(lines[line_index]), len(lines[line_index - 1])):
+							lines[line_index][i] = ' '
+
 				if len(lines[line_index]) > self.map.shape[1]:
 					return 3
 
