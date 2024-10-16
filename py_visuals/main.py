@@ -47,8 +47,8 @@ def init(texture_folder: str, animations_folder: str, height: int, width: int, r
 			sys.stdout.flush()
 
 			text_map: mapping.Map = mapping.Map(height, width)
-			map.load(os.listdir(texture_folder)[i])
-			textures[os.listdir(texture_folder)[i]] = map()
+			text_map.load(os.listdir(texture_folder)[i])
+			textures[os.listdir(texture_folder)[i]] = text_map()
 
 
 	return screen
