@@ -12,14 +12,14 @@ class Map:
 		with open(object_file, 'r') as obj:
 			lines: list = [line.strip() for line in obj.readlines()]
 
-			if len(lines) > self.map.shape[1]:
+			if len(lines) > self.map.shape[0]:
 				return 1
 
 			for line_index in range(1, len(lines)):
 				if len(lines[line_index]) != len(lines[line_index - 1]):
 					return 1
 
-				if len(lines[line_index]) > self.map.shape[0]:
+				if len(lines[line_index]) > self.map.shape[1]:
 					return 1
 
 			for i in range(len(lines)):
