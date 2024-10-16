@@ -27,6 +27,7 @@ class Screen:
 		print(base.shape)
 		for i in range(overlay.map.shape[1]):
 			for j in range(overlay.map.shape[0]):
+				print(j, i)
 				base[j + x_coord, i + y_coord] = overlay.map[j, i]		
 
 	def generate_screen(self, nb_layers: int, layers: list[tuple[tuple]]) -> np.array:
