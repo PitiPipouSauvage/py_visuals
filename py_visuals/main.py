@@ -50,6 +50,8 @@ def init(texture_folder: str, animations_folder: str, height: int, width: int, r
 			text_map.load(f"{texture_folder}/{os.listdir(texture_folder)[i]}")
 			textures[os.listdir(texture_folder)[i]] = text_map
 
+	screen.textures = textures
+	screen.animations = animations
 
 	return screen
 	
