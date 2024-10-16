@@ -25,8 +25,8 @@ class Screen:
 	def superimpose(base: np.array, overlay: mapping.Map, x_coord=0, y_coord=0) -> None:
 		print(overlay.map.shape)
 		print(base.shape)
-		for i in range(overlay.map.shape[1]):
-			for j in range(overlay.map.shape[0]):
+		for i in range(overlay.map.shape[1] - 1):
+			for j in range(overlay.map.shape[0] - 1):
 				print(j, i)
 				base[j + x_coord, i + y_coord] = overlay.map[j, i]		
 
