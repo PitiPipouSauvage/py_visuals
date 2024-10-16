@@ -17,11 +17,11 @@ class Map:
 
 			for line_index in range(1, len(lines)):
 				if len(lines[line_index]) != len(lines[line_index - 1]):
-					print("peout")
+
 					if len(lines[line_index]) > len(lines[line_index - 1]):
-						lines[line_index] += ' ' * (len(lines[line_index - 1]) - len(lines[line_index]))
-					else:
 						lines[line_index] += ' ' * (len(lines[line_index]) - len(lines[line_index - 1]))
+					else:
+						lines[line_index] += ' ' * (len(lines[line_index - 1]) - len(lines[line_index]))
 
 			if len(lines[line_index]) > self.map.shape[1]:
 				return 3
