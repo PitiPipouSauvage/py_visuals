@@ -21,6 +21,7 @@ class Map:
 						lines[line_index] += ' ' * (len(lines[line_index - 1]) - len(lines[line_index]))
 					else:
 						lines[line_index] += ' ' * (len(lines[line_index]) - len(lines[line_index - 1]))
+				print(len(i) for i in lines)
 
 				if len(lines[line_index]) > self.map.shape[1]:
 					return 3
