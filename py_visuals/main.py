@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 
 from py_visuals import mapping
 from py_visuals import screen_manager as sm
@@ -17,10 +18,11 @@ def init(texture_folder: str, animations_folder: str, height: int, width: int, r
 
 	"""
 
-	loading_phase: int = 7
+	loading_phase: int = 0
 	sys.stdout.write("Powered by\n")
 	sys.stdout.write(logo)
 	sys.stdout.flush()
+	time.sleep(5)
 
 	screen = sm.Screen(height, width, resolution)
 
