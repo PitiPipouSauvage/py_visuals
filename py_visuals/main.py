@@ -18,7 +18,6 @@ def init(texture_folder: str, animations_folder: str, height: int, width: int, r
 
 	"""
 
-	loading_phase: int = 0
 	sys.stdout.write("Powered by\n")
 	sys.stdout.write(logo)
 	sys.stdout.flush()
@@ -30,7 +29,7 @@ def init(texture_folder: str, animations_folder: str, height: int, width: int, r
 		for i in range(len(os.listdir(animations_folder))):
 			screen.clear()
 			screen.blit()
-			sm.move_cursor(loading_phase, 0)
+			sm.move_cursor(0, 0)
 			
 			sys.stdout.write(f"Loading animations {loading_sequence[i % 4]} \n")
 			sys.stdout.flush()
@@ -38,13 +37,12 @@ def init(texture_folder: str, animations_folder: str, height: int, width: int, r
 			animation.load_animation()
 			animations[os.listdir()[i]] = animation 
 
-		loading_phase += 1
 
 	if texture_folder != None:
 		for i in range(len(os.listdir(texture_folder))):
 			screen.clear()
 			screen.blit()
-			sm.move_cursor(loading_phase, 0)
+			sm.move_cursor(0, 0)
 			sys.stdout.write(f"Loading textures {loading_sequence[i % 4]} \n")
 			sys.stdout.flush()
 
