@@ -17,7 +17,7 @@ def init(texture_folder: str, animations_folder: str, height: int, width: int, r
 
 	"""
 
-	loading_phase: int = 0
+	loading_phase: int = 7
 	sys.stdout.write("Powered by\n")
 	sys.stdout.write(logo)
 	sys.stdout.flush()
