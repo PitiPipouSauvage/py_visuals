@@ -22,10 +22,10 @@ class Screen:
 		self.screen_matrix: np.array = np.array([[' '] * self.width] * self.height)
 
 	@staticmethod
-	def superimpose(self, base: np.array, overlay: np.array, x_coord=0, y_coord=0) -> None:
-		for i in range(overlay.shape[1]):
-			for j in range(overlay.shape[0]):
-				base[j + x_coord, i + y_coord] = overlay[j, i]		
+	def superimpose(self, base: np.array, overlay: mapping.Map, x_coord=0, y_coord=0) -> None:
+		for i in range(overlay.map.shape[1]):
+			for j in range(overlay.map.shape[0]):
+				base[j + x_coord, i + y_coord] = overlay.map[j, i]		
 
 	def generate_screen(self, nb_layers: int, layers: list[tuple[tuple]]) -> np.array:
 		self.clear()
