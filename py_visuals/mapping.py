@@ -39,7 +39,8 @@ class Map:
 		for i in range(self.map.shape[1]):
 			for j in range(self.map.shape[0]):
 				sys.stdout.write(self.map[j, i])
-			sys.stdout.flush()
+			sys.stdout.flush('\n')
+		sys.stdout.flush()
 
 
 class MapFromArray(Map):
