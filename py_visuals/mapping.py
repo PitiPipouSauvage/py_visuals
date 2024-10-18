@@ -36,8 +36,8 @@ class Map:
 			return 0
 
 	def display(self) -> int:
-		for i in range(self.map.shape[0]):
-			for j in range(self.map.shape[1]):
+		for i in range(self.map.shape[1]):
+			for j in range(self.map.shape[0]):
 				sys.stdout.write(self.map[i, j])
 			sys.stdout.flush()
 
